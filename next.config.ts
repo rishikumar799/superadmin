@@ -2,7 +2,7 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export', // Static export
+
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
