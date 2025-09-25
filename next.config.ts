@@ -1,9 +1,7 @@
-
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-
-  /* config options here */
+  /* existing config options */
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -23,8 +21,20 @@ const nextConfig: NextConfig = {
         hostname: 'picsum.photos',
         port: '',
         pathname: '/**',
-      }
+      },
     ],
+  },
+
+  webpack: (config) => {
+    // Add fallbacks for Node modules that some packages may try to use
+    config.resolve.fallback = {
+      fs: false,
+      path: false,
+      os: false,
+      crypto: false,
+      module: false,
+    };
+    return config;
   },
 };
 
