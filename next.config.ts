@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* existing config options */
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -10,23 +9,12 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
-      },
+      { protocol: 'https', hostname: 'placehold.co', pathname: '/**' },
+      { protocol: 'https', hostname: 'picsum.photos', pathname: '/**' },
     ],
   },
-
   webpack: (config) => {
-    // Add fallbacks for Node modules that some packages may try to use
+    // Fallbacks for Node-only modules to prevent build errors
     config.resolve.fallback = {
       fs: false,
       path: false,
